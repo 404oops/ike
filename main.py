@@ -62,14 +62,13 @@ page = id+".html"
 
 print("Generating page...")
 i = open(page, 'w')
-i.write(html.create_video_page(videoname,description,"video/"+video,"static/"+thumbnail,id,"static/"+darkthumb))
+i.write(html.create_video_page(videoname,description,"video/"+video,"static/"+thumbnail,id))
 i.close()
 print("Moving files to the distribution directory...")
 
 os.system(f"mv {video} ../dist/video")
 os.system(f"mv {page} ../dist/")
 os.system(f"mv {thumbnail} ../dist/static")
-os.system(f"mv {darkthumb} ../dist/static")
 
 print("Page Created!")
 print("Moving on...")

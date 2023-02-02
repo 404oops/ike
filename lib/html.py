@@ -9,7 +9,7 @@ def genlogo():
     
     return toreturn
 
-def create_video_page(name, description, path, thumbnail, id, darkthumb):
+def create_video_page(name, description, path, thumbnail, id):
     # #VideoPath@ike, #VideoName@ike, #VideoDescription@ike, #VideoThumbnail@ike, #Logo@ike(from genlogo whatever thats supposed to be)
     page = open("../templates/video.html", 'r').read()
     replacements = [
@@ -18,7 +18,6 @@ def create_video_page(name, description, path, thumbnail, id, darkthumb):
         ("#VideoThumbnail@ike", thumbnail),
         ("#VideoPath@ike", path),
         ("#Logo@ike", genlogo()),
-        ("#DarkThumb@ike", darkthumb),
         ("#VideoID@ike", id),
     ]
 
