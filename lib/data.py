@@ -1,15 +1,7 @@
 print("Initializing verb 'dataproc'")
-from PIL import Image, ImageEnhance, ImageFilter
 import os
 import string
 import random
-
-def thumbnail(path):
-    im = Image.open(path)
-    enhancer = ImageEnhance.Brightness(im)
-    im = enhancer.enhance(0.25)
-    im = im.filter(ImageFilter.BLUR) #why?
-    return im
 
 def checkvideo(path):
     if os.path.isfile(path):
