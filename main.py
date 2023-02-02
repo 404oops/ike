@@ -58,11 +58,7 @@ os.chdir("temp")
 
 video = f"{id}.{video.split('.')[-1]}"
 thumbnail = f"{id}.{thumbnail.split('.')[-1]}"
-darkthumb = id+"_bg.png"
 page = id+".html"
-
-print("Generating dark and blurred thumbnail for background...")
-data.thumbnail(thumbnail).save(darkthumb)
 
 print("Generating page...")
 i = open(page, 'w')
