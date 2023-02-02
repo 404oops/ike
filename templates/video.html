@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="canonical" href="https://ike.404oops.com/{id}">
+    <title>#VideoName@ike - [ike,.!]</title>
+    <meta content="[ike,.!]" property="og:title">
+    <meta content="https://ike.404oops.com/{id}" property="og:url">
+    <meta content="{description}" property="og:description">
+    <script src="https://kit.fontawesome.com/2c2185bbc6.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+        :root {
+            background-color: #222;
+            color: #fff;
+            font-family: 'Rubik', sans-serif;
+            position: relative;
+            padding-right: 10%;
+            padding-left: 10%;
+        
+        }
+
+        .bg {
+            position: fixed;
+            top:0;
+            left:0;
+            z-index: -2;
+            width: 100%; 
+            height: 100%;
+        }
+        .bg .overlay {
+            background-color: rgba(34, 34, 34, 0.5);
+            position: fixed;
+            top:0;
+            left:0;
+            z-index: -1;
+            width: 100%; 
+            height: 100%;
+        }
+        .bg img {
+            width:100%;
+            height: 100%;
+            filter: blur(24px) contrast(60%);
+            position: fixed;
+            top:0;
+            left:0;
+            opacity: 0;
+            z-index: -3;
+            transition: opacity 2s ease;
+            
+            opacity: 1;
+        }
+        .bg .bg-1 {
+            z-index: -3;
+        }
+        .bg .bg-2 {
+            z-index: -4;
+        }
+
+        .bg img.hide {
+            opacity:0;
+            
+            transition: opacity 2s ease;
+        }
+
+        .vidcontainer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            
+            margin-top: 30px;
+        }
+
+        video {
+            height: 90vh;
+            object-fit: fill;
+            transition: all 0.2s ease-in-out;
+        }
+        video:hover {
+            box-shadow: 0 0 30px 0 #555;
+            transition: all 0.2s ease-in-out;
+        }
+        a:link { text-decoration: none; }
+        a:visited { text-decoration: none; }
+        a:hover { text-decoration: none; }
+        a:active { text-decoration: none; }
+        a {color: #fff;}
+        .links {padding-top: 10px;font-size:1.5rem;padding-bottom: 50px;width:100%;margin:auto;}
+    </style>
+
+    <script>
+        let which = 1;
+        function fade() {
+            let video = document.querySelector("video");
+            video.crossOrigin = "anonymous"
+            let canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            let ctx = canvas.getContext("2d");
+            ctx.drawImage(video, 0, 0);
+            
+            let b64img = canvas.toDataURL();
+            
+            
+            document.querySelector(".bg-"+which).src = `${b64img}`;
+            setTimeout((wh) => {
+                if(wh == 2) 
+                    document.querySelector(".bg-1").classList.add("hide");
+                else 
+                    document.querySelector(".bg-1").classList.remove("hide");
+            }, 500, which)
+            
+
+
+            if(which == 1) which = 2;
+            else which = 1;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setInterval(() => {
+                fade();
+            }, 3800);
+            document.querySelector("video").addEventListener("canplay", () => {
+                
+                fade();
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="overlay"></div>
+        <img class="bg-1"></img>
+        <img class="bg-2"></img>
+    </div>
+    <a href="/"><h1 style="font-size: 3rem;margin-bottom:1%">#Logo@ike</h1></a>
+
+    <div class="vidcontainer">
+        <video src="#VideoPath@ike" controls poster="#VideoThumbnail@ike" controlsList="nodownload"></video>
+    </div>
+
+    
+    <div style="padding: 5px">
+        <h1>#VideoName@ike</h1>
+        <p style="text-align:center;">#VideoDescription@ike</p>
+        <div class="links">
+            <a download href="#VideoPath@ike"><i class="fa-solid fa-download"></i> Download</a>
+            <a href="https://404oops.com"><i class="fa-solid fa-globe"></i> Website</a>
+        </div>
+    </div>
+</body>
